@@ -1,0 +1,16 @@
+diff --git a/lib/index.js b/lib/index.js
+index 7d462a2728e2fbec4ba714f5c203c82dd1fa7a62..59c19da90bbe1ece6c63224ab460328046614d04 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -2671,6 +2671,11 @@ function resolveRelativeModule(filePath, specifier) {
+ 	const dir = path$1.dirname(filePath);
+ 	const exact = path$1.resolve(dir, specifier);
+ 	if (existsSync(exact) && !statSync(exact).isDirectory()) return exact;
++	const sourceExtensions = /\.mjs$/.test(specifier) ? [".mts"] : /\.cjs$/.test(specifier) ? [".cts"] : /\.jsx?$/.test(specifier) ? [".ts", ".tsx"] : [];
++	for (const ext of sourceExtensions) {
++		const candidate = exact.replace(/\.[cm]?jsx?$/, ext);
++		if (existsSync(candidate) && !statSync(candidate).isDirectory()) return candidate;
++	}
+ 	const extensions = [
+ 		".ts",
+ 		".tsx",

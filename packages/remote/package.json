@@ -1,0 +1,20 @@
+{
+	"name": "remote",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "vite build",
+		"preview": "vite preview --port 4174 --strictPort"
+	},
+	"dependencies": {
+		"react": "19.3.0",
+		"react-dom": "19.3.0",
+		"shared-named": "workspace:*",
+		"shared-star": "workspace:*"
+	},
+	"devDependencies": {
+		"@module-federation/vite": "1.23.0",
+		"@vitejs/plugin-react": "6.1.1",
+		"vite": "8.3.2"
+	}
+}

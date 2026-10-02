@@ -1,0 +1,14 @@
+{
+	"name": "mf-vite-nodenext-repro",
+	"private": true,
+	"packageManager": "pnpm@11.25.0",
+	"scripts": {
+		"build": "pnpm --filter remote build && pnpm --filter host build",
+		"preview": "pnpm --filter remote --filter host --parallel preview",
+		"check": "node check-live-rebind.mjs",
+		"typecheck": "tsc --noEmit -p packages/shared-star && tsc --noEmit -p packages/shared-named"
+	},
+	"devDependencies": {
+		"typescript": "5.9.3"
+	}
+}
